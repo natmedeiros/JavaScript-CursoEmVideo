@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça Você Mesmo</title>
+</head>
+<body>
+    <h1> Aplicando meus conhecimentos </h1>
+    <p> Este é um documento para aplicar tudo o que aprendi durante o curso de JavaScript do Curso em Vídeo.</p>
+
+    <style>
+        body {
+            font: normal 14pt Arial;
+            background-color: rgb(250, 207, 222);
+            color: rgb(0, 0, 0);
+        }
+
+        H1 {
+            color: rgb(255, 83, 111);
+        }
+
+        p {
+            color: rgb(245, 108, 160);
+            font-size: 15pt;
+        }
+    </style>
+
+    <script>
+        //comandos window
+        
+        window.alert('Seja bem vindo!')
+        var nome = window.prompt('Digite seu nome:')
+        var idade = window.prompt('digite sua idade:')
+
+        document.write(`Olá, ${nome} ! Você aparenta ter bem menos que ${idade} anos de idade.</br>`)
+        document.write(`O nome ${nome} possui ${nome.length} letras.</br>`)
+
+    //Covertendo números em strings
+
+    var n1 = Number(window.prompt('Digite um número para ser multiplicado:'))
+    var n2 = Number(window.prompt('Digite o outro número:'))
+    var mult = n1 * n2
+
+    document.write(`O resultado da multiplicação dos números ${n1} e ${n2} é igual à ${mult}.</br>`)
+    
+// Maiúsculas e minúsculas
+document.write(`O seu nome em letras maiúsculas fica assim ${nome.toUpperCase()}.</br>`)
+document.write(`O Seu nome em letras minúsculas fica assim: ${nome.toLowerCase()}.</br>`)
+
+// Valor monetário
+var salario = 3585.30
+document.write(`${nome} este é o valor do seu salário ${salario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}.</br>`)
+    </script>
+</body>
+</html>
