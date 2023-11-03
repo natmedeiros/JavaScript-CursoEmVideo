@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faça Você Mesmo</title>
-</head>
-<body>
-    <h1> Aplicando meus conhecimentos </h1>
-    <p> Este é um documento para aplicar tudo o que aprendi durante o curso de JavaScript do Curso em Vídeo.</p>
 
     <style>
+
         body {
             font: normal 14pt Arial;
             background-color: rgb(250, 207, 222);
@@ -25,10 +22,33 @@
             font-size: 15pt;
         }
     </style>
+    
+</head>
+<body>
+
+
+
+    <h1>Aplicando meus conhecimentos</h1>
+    <p id="msg">Este é um documento para aplicar tudo o que aprendi durante o curso de JavaScript do Curso em Vídeo.</p>
+    <p id="DOM">Este paragrafo será usado para testar o DOM</p>
+    <p name="teste">Meu nome é Natália</p>
+    
+    <div id="a">
+        <h1>
+            Bem vindo "DOM"!
+        </h1>
+
+    <div class="b">
+        <p>
+            Boa Noite "DOM"!
+        </p>
+    </div>
+    </div>
 
     <script>
         //comandos window
         
+        /*
         window.alert('Seja bem vindo!')
         var nome = window.prompt('Digite seu nome:')
         var idade = window.prompt('digite sua idade:')
@@ -51,6 +71,21 @@ document.write(`O Seu nome em letras minúsculas fica assim: ${nome.toLowerCase(
 // Valor monetário
 var salario = 3585.30
 document.write(`${nome} este é o valor do seu salário ${salario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}.</br>`)
+*/
+
+// Usando DOM
+/*var p2 = window.document.getElementsByTagName('p')[1]
+p2.style.color = 'blue'
+p2.innerText = 'Olá!'*/
+
+var p = window.document.querySelector('div.b')
+p.innerText = 'oi'
+p.style.background = 'red'
+p.style.color = 'white'
+
+var nat = window.document.getElementsByName('teste')[0]
+nat.style.background = 'white'
+
     </script>
 </body>
 </html>
