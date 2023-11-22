@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade</title>
+</head>
+<body>
+    Digite seu país de origem: <input type="text" id="nacionalidade" name="origem">
+    <input type="button" value="Verificar" onclick="analise()">
+    <div id="res">
+
+    </div>
+
+    <script>
+        function analise() {
+            const pais = document.querySelector('input#nacionalidade')
+            const res = document.querySelector('div#res')
+            const origem = (pais.value)
+            
+
+            if (origem == 'Brasil'){
+                res.innerHTML += `<p>Vivendo em ${origem} você é brasileiro!</p>`
+            } else {
+                res.innerHTML += `<p>Vivendo em ${origem} você é estrangeiro!</p>`
+            }
+                
+        }
+
+    </script>
+</body>
+</html>
