@@ -1,0 +1,38 @@
+<!-- 3. Faça um script que leia três números inteiros e mostre o maior deles.-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrando o maior número</title>
+</head>
+<body>
+    <h1>Digite três números nos campos abaixo</h1>
+    <p>1° Número: <input type="number" id="numero1" max="10000000000"/></p>
+    <p>2° Número: <input type="number" id="numero2" max="10000000000"/></p>
+    <p>3° Número: <input type="number" id="numero3" max="10000000000"/></p>
+    <p><input type="button" value="Verificar" onclick="maiorDe3()"></p>
+    <div id="res">
+
+    </div>
+
+    <script>
+        function maiorDe3() {
+        let n1 = Number.parseFloat(document.getElementById("numero1").value)
+        let n2 = Number.parseFloat(document.getElementById("numero2").value)
+        let n3 = Number.parseFloat(document.getElementById("numero3").value)
+        let resultado = document.getElementById("res")
+
+        if (n1 > n2 && n1 > n3) {
+            res.innerHTML = `O número ${n1} é o maior dos três!`
+        }
+        else if (n2 > n1 && n2 > n3) {
+            res.innerHTML = `O número ${n2} é o maior dos três!`
+        } else if (n3 > n1 && n3 > n2) {
+            res.innerHTML = `O número ${n3} é o maior dos três!`
+        }
+        }
+    </script>
+</body>
+</html>
