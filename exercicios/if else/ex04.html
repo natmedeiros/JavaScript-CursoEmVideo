@@ -1,0 +1,39 @@
+<!--
+    4. Faça um script que pede dois inteiros e armazene eles em duas variáveis.
+    Em seguida, troque o valor das variáveis, invertendo e exibindo o antes e o
+    depois em uma janela de alert.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 04</title>
+</head>
+<body>
+    <h1>Digite dois números nos campos abaixo e veja o valor ser invertido</h1>
+    <p>Digite o 1° número: <input type="number" name="num1" id="num1"></p>
+    <p>Digite o 2° número: <input type="number" name="num2" id="num2"></p>
+    <p><input type="button" value="Inverter" onclick="trocar()"></p>
+
+    <script>
+        function trocar() {
+        let valor1 = window.document.getElementById('num1')
+        let valor2 = window.document.getElementById('num2')
+
+        let n1 = Number(valor1.value)
+        let n2 = Number(valor2.value)
+
+        if (n1 <= 0 || n2 <= 0) {
+                window.alert('[ERRO] Dados incompletos!')
+            }
+       if (n1 > 0 && n2 > 0) {
+            window.alert(`
+            Valores digitados: 1° número = ${n1} e 2° número = ${n2}.
+            Valores invertidos: 1° número = ${n2} e 2° número = ${n1}.`)
+       }
+    }
+    </script>
+</body>
+</html>

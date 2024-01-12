@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <h1>Tabuada:</h1>
+    <p>Digite o número: <input type="number" name="valor" id="valor"></p>
+    <div>Escolha o operador que deseja: <input list="operadores" name="operador" id="operador">
+    <datalist id="operadores">
+        <option value="+" id="soma"></option>
+        <option value="-" id="sub"></option>
+        <option value="*" id="mult"></option>
+        <option value="/" id="div"></option>
+    </datalist>
+    </div>
+    <p><input type="button" value="Gerar" onclick="calcular()"></p>
+    <div id="resultado">
+        Resultado: <br/>
+    </div>
+
+    <script>
+        function calcular() {
+            let valorIn = document.querySelector("input#valor").value // pega o valor digitado
+            let oper = document.querySelector("datalist#operadores") // pega a lista de operadores
+            let operSom = document.querySelector("option#soma")
+            let operSub = document.querySelector("option#sub")
+            let operMul = document.querySelector("option#mult")
+            let operDiv = document.querySelector("option#div")
+            let res = document.querySelector("div#resultado") // pega a div de resultado
+
+            // Mensagem de erro caso o usuário não digite um número válido
+            if (valorIn.value <= 0) {
+                alert("[ERRO] Digite um valor!")
+            }
+
+            // Mensagem de erro caso o usuário não escolha um operador
+            if (oper.value != operSom || oper.value != operSub || oper.value != operMul || oper.value != operDiv) {
+                alert("[ERRO] Escolha um operador")
+            }
+        }
+    </script>
+</body>
+</html>
