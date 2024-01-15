@@ -1,33 +1,133 @@
-<!-- 1. Faça um script que verifique se uma letra digitada num campo de input é vogal ou consoante. -->
-    
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vogal ou Consuante</title>
-
-
-
+    <title>Tabuada</title>
 </head>
 <body>
-    Digite uma letra: <input type="text" id="palavra">
-    <input type="button" value="verificar" onclick="analise()">
-    <div id="res">
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: azure;
+            color: rgb(1, 24, 68);
+        }
 
-    </div>
-</body>
-<script type="text/javascript">
-    function analise() {
-        const letra = document.getElementById("palavra").value.toLowerCase()
-        let resultado = document.getElementById("res")
+        #conteudo {
+            font-family: sans-serif;
+            width: 400px;
+            background-color: rgb(136, 247, 255);
+            border-radius: 3px;
+            padding: 5px;
+        }
+        
+        #btn {
+            background-color: rgb(46, 122, 172);
+            color: aliceblue;
+            padding: 8px;
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        }
+        #btn:hover {
+            background-color: rgb(51, 140, 241);
+        }
+        #btn:active {
+            box-shadow: none;
+        }
+        
+        #operadores {
+            color: rgb(1, 24, 68);
+        }
+    </style>
 
-            if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
-                res.innerHTML = "Essa é uma VOGAL"
-            } else {
-                res.innerHTML = "Essa é uma CONSUANTE"
+    <div id="conteudo">
+    <h1>Tabuada:</h1>
+    <p>Digite um número: <input type="number" name="valor" id="valor"></p>
+    <form>
+        <label>Escolha o operador que deseja: </label>
+        <select name ="operador" id="operadores" required="required">
+            <option value="vazio" id="vazio">Escolha um operador</option>
+            <option value="+" id="soma">+</option>
+            <option value="-" id="sub">-</option>
+            <option value="x" id="mult">x</option>
+            <option value="/" id="div">/</option>
+        </select>
+
+        <p><input type="button" value="Calcular" onclick="montarTabuada()" id="btn"></p>
+
+        <div id="resultado">
+            Resultado: <br/>
+            <div id="resultadosContainer">
+            </div>
+        </div>
+    </form>
+</div>
+    <script>
+        function pegarValores() {
+            let valorIn = document.querySelector("input#valor") // pega o valor digitado
+            let oper = document.querySelector("select#operadores") // pega os operadores
+            let res = document.querySelector("div#resultado") // pega a div de resultado
+
+            // Mensagem de erro caso, o usuário não digite um número válido
+            if (valorIn.value <= 0) {
+                alert("[ERRO] Digite um valor maior que zero!")
+                return {}
             }
-}
-</script>
-</html>
 
+            // Mensagem de erro, caso o usuário não escolha um operador
+            if (oper.value == 'vazio') {
+                alert("[ERRO] Escolha um operador")
+                return {}
+            }
+
+            return { valor: valorIn.value, operador: oper.value }
+        }
+
+        function pegarReseltado(valorA, valorB, operador) {
+            const parsedValorA = parseInt(valorA) // pegando a istring e transformando em um número inteiro
+            const parsedValorB = parseInt(valorB) // pegando a istring e transformando em um número inteiro
+
+            // -- CÁLCULOS DA TABUADA --
+            if (operador == '+') {
+                return parsedValorA + parsedValorB
+            }
+            if (operador == 'x') {
+                return parsedValorA * parsedValorB
+            }
+            if (operador == '-') {
+                return parsedValorA - parsedValorB
+            }
+            if (operador == '/') {
+                return parsedValorA / parsedValorB
+            }
+        }
+
+        function montarListaTabuada(valores, limiteTabuada = 10) {
+            const result = []
+            const indexList = [...Array(limiteTabuada).keys()] 
+            indexList.forEach((key) => {
+                result.push(`${valores.valor} ${valores.operador} ${key+1} = ${pegarReseltado(valores.valor, key+1, valores.operador)}`)
+            })
+            return result
+        }
+
+        function renderizarTabuada(listaTabuada) {
+            const resultadosContainer = document.querySelector('#resultadosContainer')
+            listaTabuadaResultado = listaTabuada.map(item => {
+                return `<div>${item}</div>`
+            })
+            resultadosContainer.innerHTML = listaTabuadaResultado.join('')
+        }
+
+        function montarTabuada() {
+            const valores = pegarValores()
+            if (!valores.valor || !valores.operador) { return }
+            const listaTabuada = montarListaTabuada(valores)
+            renderizarTabuada(listaTabuada)
+        }
+    </script>
+</body>
+</html>
