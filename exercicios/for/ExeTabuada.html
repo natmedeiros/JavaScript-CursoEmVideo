@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: azure;
+            color: rgb(15, 1, 1);
+        }
+
+        #conteudo {
+            font-family: sans-serif;
+            width: 400px;
+            background-color: rgb(248, 231, 176);
+            border-radius: 3px;
+            padding: 5px;
+        }
+        
+        #btn {
+            background-color: rgb(245, 107, 15);
+            color: aliceblue;
+            padding: 8px;
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        }
+        #btn:hover {
+            background-color: rgb(247, 144, 60);
+        }
+        #btn:active {
+            box-shadow: none;
+        }
+        
+        #operadores {
+            color: rgb(0, 1, 2);
+        }
+    </style>
+
+    <div id="conteudo">
+    <h1>Tabuada:</h1>
+    <p>Digite um número: <input type="number" name="valor" id="valor"></p>
+    <form>
+        <label>Escolha o operador que deseja: </label>
+        <select name ="operador" id="operadores" required="required">
+            <option value="vazio" id="vazio">Escolha um operador</option>
+            <option value="+" id="som">+</option>
+            <option value="-" id="sub">-</option>
+            <option value="x" id="mult">x</option>
+            <option value="/" id="div">/</option>
+        </select>
+
+        <p><input type="button" value="Gerar tabuada" onclick="montarTabuada()" id="btn"></p>
+
+        <div id="resultado">
+            Resultado: <br/>
+        </div>
+    </form>
+</div>
+
+<script>
+function montarTabuada() {
+    let valor1 = document.querySelector("input#valor")
+    let oper = document.querySelector("select#operadores")
+    let res = document.querySelector("div#resultado")
+    let mais = document.querySelector("option#som")
+    let menos = document.querySelector("option#sub")
+    let multiplicar = document.querySelector("option#mult")
+    let dividir = document.querySelector("option#div")
+    let valorIn = parseInt(valor1.value)
+
+    res.innerHTML = 'Resultado: </br>'
+
+    // Mensagem de ERRO
+    if (valor1.value <= 0) {
+        alert("[ERRO] Digite um valor positivo!")
+        return {}
+    }
+
+    // Mensagem de ERRO
+    if (oper.value == 'vazio') {
+        alert("[ERRO] Escolha um operador!")
+        return {}
+    }
+
+    
+    for (valorFn = 1; valorFn >= 1 && valorFn <= 10; valorFn++) {
+        
+        // Calculando SOMA
+        if (oper.value == "+") {
+            let soma = valorIn + valorFn    
+            res.innerHTML += `${valorIn} ${mais.value} ${valorFn} = ${soma} </br>`
+        }
+
+        // Calculando SUBTRAÇÃO
+        else if (oper.value == "-") {
+            let subtracao = valorIn - valorFn
+            res.innerHTML += `${valorIn} ${menos.value} ${valorFn} = ${subtracao} </br>`
+        }
+
+        // Calculando MULTIPLICAÇÃO
+        else if (oper.value == "x") {
+            let multiplicacao = valorIn * valorFn
+            res.innerHTML +=  `${valorIn} ${multiplicar.value} ${valorFn} = ${multiplicacao} </br>`
+        }
+
+        // Calculando DIVISÃO
+        else {
+            let dividisao = valorIn / valorFn
+            res.innerHTML += `${valorIn} ${dividir.value} ${valorFn} = ${dividisao} </br>`
+        }
+    }
+}
+</script>
+</body>
+</html>
